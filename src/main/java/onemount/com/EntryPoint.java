@@ -21,19 +21,13 @@ public class EntryPoint {
         ArrayList<Passenger> passInfo = new ArrayList<>();
         for (int i = 0; i < numOfPassenger; i++) {
             Passenger new_passenger = new Passenger();
-            new_passenger.inputPassInfo();// gọi hàm để input từng hành khách
+            new_passenger.inputPassInfo();
             passInfo.add(new_passenger);
         }
 
-//        //xuat danh sach hanh khach + ve
+        // Total price per passenger
         for (int i = 0; i < passInfo.size(); i++) {
-            passInfo.get(i);
             System.out.println(passInfo.get(i).toString());
-        }
-
-//        // Total price per passenger
-        for (int i = 0; i < passInfo.size(); i++) {
-            passInfo.get(i);
             System.out.println("Total price of passenger " + passInfo.get(i).getFullName()
                     + " is "+ passInfo.get(i).totalPrice());
         }
