@@ -2,37 +2,46 @@ package entities;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Ticket {
-    private String tenChuyen;
-    private LocalDateTime ngayBay;
-    private int giaVe;
+    private String flightName;
+    private int price;
+    private LocalDateTime dateOfFlight;
 
-    public void setGiaVe(int giaVe) {
-        this.giaVe = giaVe;
+    public void setGiaVe(int price) {
+        this.price = price;
     }
 
-   public void setTenChuyen(String tenChuyen){
-        this.tenChuyen = tenChuyen;
+   public void setTenChuyen(String flightName){
+        this.flightName = flightName;
     }
 
-    public void setNgayBay(LocalDateTime ngayBay) { // set là em gán vô, vậy em return chi
-        this.ngayBay = ngayBay;
+    public void setNgayBay(LocalDateTime dateOfFlight) {
+        this.dateOfFlight = dateOfFlight;
     }
 
     public int getGiaVe(){
-        return this.giaVe;
+        return this.price;
     }
 
     public String toString() {
-        // Don gian vay cung duoc
-        // return this.tenChuyen + " " + this.ngayBay.toString() + " " + String.valueOf(this.giaVe);
-
-        // Phien ban màu mè
-        return "\nTen chuyen: " + this.tenChuyen + "\nNgay bay: " + this.ngayBay.toString() + "\nGia ve: " + this.giaVe;
+       return "\nTen chuyen: " + this.flightName + "\nNgay bay: " +
+               String.valueOf(this.dateOfFlight) + "\nGia ve: " + this.price;
 
     }
 
-
+    public void inputTicket() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Flight name : ");
+        this.flightName = input.nextLine();
+        System.out.println("Date of flight (yyyy-MM-dd HH:mm:ss): ");
+        String dateTimeText = input.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.dateOfFlight = LocalDateTime.parse(dateTimeText, formatter);
+        System.out.println("Price : ");
+        this.price = input.nextInt();
+    }
 }
